@@ -1,3 +1,4 @@
+require('dotenv').config()
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,7 +12,7 @@ const catalogRouter = require("./routes/catalog"); //Import routes for "catalog"
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
-const mongoDB = "mongodb+srv://m001-student:m001-mongodb-basics@cluster0.dhmkhyn.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGO_KEY;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
